@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: frendate-backend
+    env: python
+    plan: free  # или basic если нужна постоянная работа
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn frendate.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: frendate.settings
+      - key: SECRET_KEY
+        value: django-insecure-%1eg@unmzfho5&_au%-pv6$5kqb#^pv9thh0e#qoe^j!49c)g3
+      - key: DEBUG
+        value: false
+      - key: ALLOWED_HOSTS
+        value: frendate-backend.onrender.com
+      - key: DB_NAME
+        value: frendate_db
+      - key: DB_USER
+        value: frendate_user
+      - key: DB_PASSWORD
+        value: ikHflJvG4iTkM1zsiYz4dVwDNt7tg0dq
+      - key: DB_HOST
+        value: dpg-d0g4eibuibrs73f8cp70-a.oregon-postgres.render.com
+      - key: DB_PORT
+        value: 5432
